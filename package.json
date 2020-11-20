@@ -1,7 +1,14 @@
 {
   "name": "nested-tree",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "author": "Alexander Fedorenko",
+  "license": "MIT",
+  "description": "React component to navigate a tree hierarchy with breadcrumb and a list.",
+  "bugs": {
+    "url": "https://github.com/alfed7/nested-tree/issues"
+  },
+  "homepage": "https://github.com/alfed7/nested-tree#readme",
   "babel": {
     "presets": [
       "@babel/preset-react"
@@ -44,7 +51,8 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "last 1 ie version"
     ]
   }
 }
