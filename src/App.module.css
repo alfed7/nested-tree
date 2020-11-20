@@ -1,0 +1,14 @@
+.app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+.sideBar {
+  flex: 1;
+  border: #999 1px solid;
+  padding: 1em;
+}
+.mainArea {
+  flex: 1;
+  background-color: #ccc;
+}

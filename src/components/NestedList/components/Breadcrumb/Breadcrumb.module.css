@@ -1,0 +1,21 @@
+.crumbButton {
+  height: 1.6em;
+  font-size: 1em;
+  margin: 0 2px 4px 4px;
+  padding: 0 0.7em;
+  background-color: #eee;
+}
+.crumbButton,
+.crumbButton:focus,
+.crumbButton:focus-visible {
+  border: 0;
+  border-radius: 4px;
+  outline: none;
+}
+.crumbButton:hover {
+  box-shadow: 2px 1px 2px #999;
+}
+.divider {
+  color: rgba(#999, 0.75);
+  margin: 3px;
+}
