@@ -1,0 +1,4 @@
+@use "sass:color";
+
+$primary: #eee;
+$primary-dark: #999;
