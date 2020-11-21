@@ -4,20 +4,25 @@ import { NestedItem, Breadcrumb } from "./components";
 import classes from "./NestedList.module.css";
 import clsx from "clsx";
 
+const rootNesting = { isRoot: true, name: "All" };
+
 const NestedList = (props) => {
   const {
     className,
+    itemClassName,
     data,
     expandIcon,
     collapseIcon,
     getItemId,
     renderItem,
   } = props;
-  const [nestingInfo, setNesting] = useState([{ isRoot: true, name: "All" }]);
+
+  const [nestingInfo, setNesting] = useState([rootNesting]);
   const [items, setItems] = useState(data);
   //const [isExpanded, setIsExpanded] = useState(false);
   useEffect(() => {
     setItems(data);
+    setNesting([rootNesting]);
   }, [data]);
   const handleExpand = (node) => () => {
     //setIsExpanded((prev) => !prev);
@@ -27,10 +32,7 @@ const NestedList = (props) => {
   const handleFolderClick = (node) => {
     if (node.isRoot) {
       setItems(data);
-      setNesting((prev) => {
-        const nesting = [prev[0]];
-        return nesting;
-      });
+      setNesting([rootNesting]);
       return;
     }
     const id = getItemId ? getItemId(node) : node.id;
@@ -52,9 +54,10 @@ const NestedList = (props) => {
       </div>
       <div>
         {items &&
-          items.map((node) => (
+          items.map((node, i) => (
             <NestedItem
-              key={node.id}
+              className={itemClassName}
+              key={i}
               node={node}
               expandIcon={expandIcon}
               collapseIcon={collapseIcon}
@@ -71,10 +74,11 @@ const NestedList = (props) => {
 
 NestedList.propTypes = {
   className: PropTypes.string,
-  collapseIcon: PropTypes.func,
+  collapseIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   data: PropTypes.array,
-  expandIcon: PropTypes.func,
+  expandIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   getItemId: PropTypes.func,
+  itemClassName: PropTypes.string,
   renderItem: PropTypes.func,
 };
 

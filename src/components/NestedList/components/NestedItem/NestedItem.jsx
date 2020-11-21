@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classes from "./NestedItem.module.css";
+import clsx from "clsx";
 
 const NestedItem = (props) => {
   const {
+    className,
     node,
     collapseIcon,
     expandIcon,
@@ -14,7 +16,7 @@ const NestedItem = (props) => {
   } = props;
   const ExpandCollapseIcon = isExpanded ? collapseIcon : expandIcon;
   return (
-    <div className={classes.root}>
+    <div className={clsx(classes.root, className)}>
       <div className={classes.expandArea}>
         {canExpand && (
           <button className={classes.expandButton} onClick={onToggle}>
@@ -33,8 +35,9 @@ const NestedItem = (props) => {
 
 NestedItem.propTypes = {
   canExpand: PropTypes.bool,
-  collapseIcon: PropTypes.func,
-  expandIcon: PropTypes.func,
+  className: PropTypes.string,
+  collapseIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  expandIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   isExpanded: PropTypes.bool,
   node: PropTypes.object,
   onToggle: PropTypes.func,

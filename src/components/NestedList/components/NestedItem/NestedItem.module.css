@@ -1,5 +1,5 @@
 .root {
-  height: 3em;
+  min-height: 3em;
   border-bottom: 1px #eee solid;
   display: flex;
   align-items: center;
